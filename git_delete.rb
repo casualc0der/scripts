@@ -9,7 +9,7 @@ repos = %w[
   githubusername/reponame
   githubusername/reponame
   githubusername/reponame
-]                 
+]
 
 require 'net/http'
 require 'uri'
@@ -19,10 +19,10 @@ repos.each do |repo_name|
   sleep 1
   uri = URI.parse("https://api.github.com/repos/#{repo_name}")
   request = Net::HTTP::Delete.new(uri)
-  request["Authorization"] = "token #{API_TOKEN}"
+  request['Authorization'] = "token #{API_TOKEN}"
 
   req_options = {
-    use_ssl: uri.scheme == "https",
+    use_ssl: uri.scheme == 'https'
   }
 
   response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
@@ -31,5 +31,3 @@ repos.each do |repo_name|
 
   puts response.code
 end
-
-
